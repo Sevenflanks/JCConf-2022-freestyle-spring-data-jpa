@@ -1,6 +1,10 @@
 # JCConf-2022 繼續花式SrpingDataJpa
 
-## 範例們
+## 簡報
+
+- /slide.pptx
+
+## Demo(以UnitTest呈現)
 
 - JPQL : 我就是不想寫SQL
    - tw.org.jug.jcconf2022.freestyle_jpa.JqplSampleTest
