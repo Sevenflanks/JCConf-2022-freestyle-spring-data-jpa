@@ -67,12 +67,19 @@ public interface EmployeeDao extends BaseDao<Employee> {
       + "and (?5 is null or e.department.oid = ?5)")
   List<Employee> findByCondition(String eid, String name, LocalDate dutyDateGe, LocalDate dutyDateLe, String oid);
 
-  @Query("select e from Employee e left join e.department d "
-      + "where (?1 is null or e.eid = ?1) "
-      + "and (?2 is null or e.name = ?2) "
-      + "and (?3 is null or e.dutyDate >= ?3) "
-      + "and (?4 is null or e.dutyDate <= ?4) "
-      + "and (?5 is null or e.department.oid = ?5)")
+  @Query(
+      value = "select e from Employee e left join e.department d "
+          + "where (?1 is null or e.eid = ?1) "
+          + "and (?2 is null or e.name = ?2) "
+          + "and (?3 is null or e.dutyDate >= ?3) "
+          + "and (?4 is null or e.dutyDate <= ?4) "
+          + "and (?5 is null or e.department.oid = ?5)",
+      countQuery = "select count(e) from Employee e left join e.department d "
+          + "where (?1 is null or e.eid = ?1) "
+          + "and (?2 is null or e.name = ?2) "
+          + "and (?3 is null or e.dutyDate >= ?3) "
+          + "and (?4 is null or e.dutyDate <= ?4) "
+          + "and (?5 is null or e.department.oid = ?5)")
   Page<Employee> findByConditionPage(
       String eid, String name, LocalDate dutyDateGe, LocalDate dutyDateLe, String oid,
       Pageable pageable);
